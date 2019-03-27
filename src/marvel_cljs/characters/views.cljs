@@ -21,16 +21,16 @@
 
 (defn load-more-button
   []
-  [:div :align "center" [:button {:style
-                                            {:color "blue" :background-color "red"}
-                                  :on-click (fn
-                                              []
-                                              (dispatch [:set-more-data (update @(subscribe [:param-get]) :limit * 2)])
+  [:div [:button {:style
+                            {:color "blue" :background-color "red"}
+                  :on-click (fn
+                              []
+                              (dispatch [:set-more-data (update @(subscribe [:param-get]) :limit + 30)])
 
-                                              (dispatch [:get-marvel @(subscribe [:param-get])])
-                                              )
-                                  }
-                         "Load More Data"]])
+                              (dispatch [:get-marvel @(subscribe [:param-get])])
+                              )
+                  }
+         "Load More Data"]])
 
 
 (defn characters-show
@@ -46,13 +46,13 @@
                                                                                                                                     }
                                                                                                                               ]]
                                                             [:div {:class "flip-card-back"}
-                                                             [:h1 {:style {:font-size "2vw" :max-width "150px"}} (:name item)]]
+                                                             [:h1 {:style {:font-size "2vw"}} (:name item)]]
                                                             ]]]
 
       ]
 
      )
-   ])
+   [load-more-button]])
 
 
 (defn name-input
@@ -75,7 +75,6 @@
   [:div
    [header-message]
    [characters-show]
-   [load-more-button]
    ])
 
 (defn main-panel
