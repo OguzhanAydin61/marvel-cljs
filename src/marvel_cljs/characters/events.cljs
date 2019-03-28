@@ -1,6 +1,7 @@
 (ns marvel-cljs.characters.events
   (:require [marvel-cljs.util :as util]
             [day8.re-frame.http-fx]
+            [marvel-cljs.characters.subs]
             [marvel-cljs.db :as db]
             [re-frame.core :refer [reg-event-db reg-event-fx]]
             [marvel-cljs.effects]))
@@ -20,3 +21,9 @@
   :set-more-data
   (fn [db [_ more-data-hash]]
     (assoc db :param-get more-data-hash)))
+
+
+(reg-event-db
+  :set-display
+  (fn [db [_ new-display]]
+    (assoc db :display new-display)))

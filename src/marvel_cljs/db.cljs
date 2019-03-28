@@ -3,7 +3,7 @@
 
 (def default-db {
                  :name      "Oğuzhan"
-                 :display   {:visible true :id 0}
+                 :display   {}
                  :param-get {:limit 30 :offset 1}
                  :count     1})
 

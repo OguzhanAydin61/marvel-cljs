@@ -38,10 +38,6 @@
 
 
 
-(reg-event-db
-  :set-display
-  (fn [db [_ new-display]]
-    (assoc db :display new-display)))
 
 
 (reg-event-db

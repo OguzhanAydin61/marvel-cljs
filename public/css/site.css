@@ -160,8 +160,8 @@ a:hover {
 }
 
 .flip-card-back {
-  background-color: #2980b9;
-  opacity: 0.9;
+  background-color: red;
+  opacity: 0.8;
   color: white;
   transform: rotateY(180deg);
   z-index: 1;

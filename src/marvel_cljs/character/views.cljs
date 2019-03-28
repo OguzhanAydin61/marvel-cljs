@@ -6,24 +6,24 @@
             ))
 
 
-
 (defn character-detail-page
   []
   [(fn []
-     (let [character (get (-> @(subscribe [:marvel-db]) :data :results) (:id @(subscribe [:display])))]
-       [:div [:div
+     (let [character  @(subscribe [:display])
+           links (:urls character)]
+       [:div (when-not (clojure.string/blank? links) [:div
               {:class "navbar"}
               [:div {:class "dropdown"}
                [:button {:class "dropbtn"}
                 [:i {:class "fa fa-caret-down"}]
                 "Links"]
                [:div {:class "dropdown-content"}
-                (for [links (:urls character)]
-                  [:a {:href (:url links) :target "_blank"} (:type links)]
+                (for [link links]
+                  [:a {:href (:url link) :target "_blank"} (:type link)]
                   )
                 ]
                ]
-              ]
+              ])
         [:div {:style {:flex-basis "40%" :margin 30 :text-align "center"}}
          [:h1
           [:div {:style {:flex-basis "40%" :margin 30 :text-align "center"}}
